@@ -21,7 +21,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar fixed z-10 bg-[#202C45] text-white max-w-screen-2xl pb-5">
+      <div className="navbar fixed z-10 bg-[#202C45] text-white max-w-screen-2xl pb-8 lg:pb-5">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -48,19 +48,21 @@ const NavBar = () => {
             </ul>
           </div>
           <div>
-            <Link to="/" className="btn btn-ghost normal-case font-bold ">
-              <img src={logo} alt="" />
-              <span className="text-lg lg:text-2xl lg:font-bold font-serif">
-                FLUENCY FACTORY
-              </span>
+            <Link to="/" className="btn btn-ghost normal-case ">
+              <div className="flex flex-col lg:flex-row justify-center items-center">
+                <img src={logo} alt="" />
+                <span className="text-md lg:text-2xl lg:font-bold font-serif">
+                  FLUENCY FACTORY
+                </span>
+              </div>
             </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Get started</a>
+        <div className="navbar-end pr-5">
+          <a className="btn">Buy Now</a>
         </div>
       </div>
     </>
