@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const {
@@ -9,8 +13,22 @@ const SignUp = () => {
     reset,
     formState: { errors },
   } = useForm();
+  const { createUser } = useContext(AuthContext);
 
   const onSubmit = (data) => {
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      reset();
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "User created successfully.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
+
     console.log(data);
   };
 
@@ -109,6 +127,7 @@ const SignUp = () => {
               />
             </div>
           </form>
+          <SocialLogin></SocialLogin>
           <p className="px-6 text-lg text-center text-white">
             Already have an account?{" "}
             <Link
@@ -119,21 +138,6 @@ const SignUp = () => {
             </Link>
             .
           </p>
-          {/* <div className='flex items-center pt-4 space-x-1'>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-          <p className='px-3 text-sm dark:text-gray-400'>
-            Login with social accounts
-          </p>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-        </div>
-        <div
-          onClick={handleGoogleSignIn}
-          className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'
-        >
-          <FcGoogle size={32} />
-
-          <p>Continue with Google</p>
-        </div> */}
         </div>
       </div>
     </>

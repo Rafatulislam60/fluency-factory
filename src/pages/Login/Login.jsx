@@ -1,7 +1,38 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const { signIn } = useContext(AuthContext);
+
+  const onSubmit = (data) => {
+    signIn(data.email, data.password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      Swal.fire({
+        title: "User Login Successful.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+    });
+
+    console.log(data);
+  };
+
   return (
     <>
       <Helmet>
@@ -13,14 +44,14 @@ const Login = () => {
             <h1 className="my-3 text-4xl font-bold">Log In</h1>
             <p className="text-md text-white">Sign in to access your account</p>
           </div>
-          <form className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-white text-lg">Email</span>
               </label>
               <input
                 type="email"
-                name="email"
+                {...register("email", { required: true })}
                 placeholder="email"
                 className="input input-bordered text-black"
               />
@@ -31,7 +62,12 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                name="password"
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 20,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                })}
                 placeholder="password"
                 className="input input-bordered text-black"
               />
@@ -48,6 +84,7 @@ const Login = () => {
               <input className="btn btn-primary" type="submit" value="Login" />
             </div>
           </form>
+          <SocialLogin></SocialLogin>
           <p className="px-6 text-lg text-center text-white">
             Don't have an account yet?{" "}
             <Link

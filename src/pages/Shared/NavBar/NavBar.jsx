@@ -1,21 +1,45 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo1.png";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   const navItems = (
     <>
       <li className="font-semibold text-xl">
         <Link to="/">Home</Link>
       </li>
       <li className="font-semibold text-xl">
+        <Link to="/instructor">Instructors</Link>
+      </li>
+      <li className="font-semibold text-xl">
         <Link to="/class">Classes</Link>
       </li>
-      <li className="font-semibold text-xl">
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
-      <li className="font-semibold text-xl">
-        <Link to="/login">Login</Link>
-      </li>
+
+      {user ? (
+        <>
+          <li className="font-semibold text-xl">
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <button onClick={handleLogOut} className="btn btn-ghost font-semibold text-lg">
+            LogOut
+          </button>
+        </>
+      ) : (
+        <>
+          <li className="font-semibold text-xl">
+            <Link to="/login">Login</Link>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -60,6 +84,15 @@ const NavBar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
+          {user?.email ? (
+            <div className="avatar">
+              <div className="w-8 rounded-full ring ring-primary  ring-offset-2">
+                <img src={user && user.photoURL} />
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="navbar-end pr-5">
           <a className="btn">Buy Now</a>
