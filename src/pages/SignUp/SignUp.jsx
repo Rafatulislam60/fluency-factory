@@ -37,7 +37,7 @@ const SignUp = () => {
       <Helmet>
         <title>Fluency Factory | Sign up</title>
       </Helmet>
-      <div className="flex justify-center items-center min-h-full my-10">
+      <div className="flex justify-center items-center min-h-screen my-10">
         <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-[#202C45] text-white">
           <div className="mb-8 text-center">
             <h1 className="my-3 text-4xl font-bold">Sign up</h1>
