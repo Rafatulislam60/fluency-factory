@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
@@ -14,6 +14,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
@@ -27,6 +28,7 @@ const SignUp = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate("/");
     });
 
     console.log(data);

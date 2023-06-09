@@ -95,7 +95,7 @@ const NavBar = () => {
           )}
         </div>
         <div className="navbar-end pr-5">
-          <a className="btn">Buy Now</a>
+          <a className="btn">Enroll Now</a>
         </div>
       </div>
     </>

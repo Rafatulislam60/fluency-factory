@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
@@ -14,23 +14,29 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
 
   const onSubmit = (data) => {
     signIn(data.email, data.password).then((result) => {
       const user = result.user;
       console.log(user);
-      Swal.fire({
-        title: "User Login Successful.",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
-      });
+      if (user) {
+        Swal.fire({
+          title: "User Login Successful.",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+      }
+      navigate(from, { replace: true });
     });
-
-    console.log(data);
   };
 
   return (
