@@ -1,12 +1,15 @@
+import { Helmet } from "react-helmet-async";
 import Slider from "../Slider/Slider";
 
-
 const Home = () => {
-    return (
-        <div className="py-24 lg:py-36">
-            <Slider></Slider>
-        </div>
-    );
+  return (
+    <div className="py-24 lg:py-36">
+      <Helmet>
+        <title>Fluency Factory | Home</title>
+      </Helmet>
+      <Slider></Slider>
+    </div>
+  );
 };
 
 export default Home;
