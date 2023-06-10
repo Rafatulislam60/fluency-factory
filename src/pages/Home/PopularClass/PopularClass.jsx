@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const PopularClass = () => {
   const [popularClasses, setPopularClasses] = useState([]);
   useEffect(() => {
-    fetch("classData.json")
+    fetch("http://localhost:5000/classes")
       .then((res) => res.json())
       .then((data) => setPopularClasses(data));
   }, []);

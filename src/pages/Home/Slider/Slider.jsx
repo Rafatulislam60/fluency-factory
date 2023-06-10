@@ -1,3 +1,4 @@
+import { Fade, Slide } from "react-awesome-reveal";
 import { Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -22,13 +23,19 @@ const Slider = () => {
           />
           <div className="hidden lg:absolute lg:flex items-center rounded-xl h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
             <div className="text-white space-y-7 pl-20 w-1/2">
-              <h2 className="text-6xl font-bold">
-                Take great <span className="text-[#F2184F]">foreign language courses</span> from renowned teacher.
-              </h2>
-              <p className="text-lg font-semibold">
+              <Slide>
+                <h2 className="text-6xl font-bold">
+                  Take great{" "}
+                  <span className="text-[#F2184F]">
+                    foreign language courses
+                  </span>{" "}
+                  from renowned teacher.
+                </h2>
+              </Slide>
+              <Fade delay={1e3} cascade damping={1e-1}>
                 Ours courses are built in partnership with language leaders and
                 relevant field specialist.
-              </p>
+              </Fade>
               <div>
                 <button className="btn btn-outline btn-lg text-white">
                   Start Learning Now
@@ -48,13 +55,16 @@ const Slider = () => {
             />
             <div className="hidden lg:absolute lg:flex items-center rounded-xl h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
               <div className="text-white space-y-7 pl-20 w-1/2">
-                <h2 className="text-6xl font-bold">
-                  <span className="text-[#F2184F]">Education</span> center and distance education.
-                </h2>
-                <p className="text-lg font-semibold">
+                <Slide>
+                  <h2 className="text-6xl font-bold">
+                    <span className="text-[#F2184F]">Education</span> center and
+                    distance education.
+                  </h2>
+                </Slide>
+                <Fade delay={1e3} cascade damping={1e-1}>
                   Online education leads the world in distance education with
                   high quality language degree and online courses.
-                </p>
+                </Fade>
                 <div>
                   <button className="btn btn-outline btn-lg text-white">
                     Start Learning Now
@@ -75,13 +85,16 @@ const Slider = () => {
             />
             <div className="hidden lg:absolute lg:flex items-center rounded-xl h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
               <div className="text-white space-y-7 pl-20 w-1/2">
-                <h2 className="text-6xl font-bold">
-                  Receive <span className="text-[#F2184F]">personalized</span> coaching.
-                </h2>
-                <p className="text-lg font-semibold">
+                <Slide>
+                  <h2 className="text-6xl font-bold">
+                    Receive <span className="text-[#F2184F]">personalized</span>{" "}
+                    coaching.
+                  </h2>
+                </Slide>
+                <Fade delay={1e3} cascade damping={1e-1}>
                   Learning is a collaborative process, and we are here to
                   provide you with guidance every step of the way.
-                </p>
+                </Fade>
                 <div>
                   <button className="btn btn-outline btn-lg text-white">
                     Start Learning Now
