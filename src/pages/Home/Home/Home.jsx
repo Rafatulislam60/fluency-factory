@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import Planning from "../Planning/Planning";
 import PopularClass from "../PopularClass/PopularClass";
 import Slider from "../Slider/Slider";
 
@@ -10,6 +11,7 @@ const Home = () => {
       </Helmet>
       <Slider></Slider>
       <PopularClass></PopularClass>
+      <Planning></Planning>
     </div>
   );
 };
