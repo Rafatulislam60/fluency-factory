@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import PopularClass from "../PopularClass/PopularClass";
 import Slider from "../Slider/Slider";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
         <title>Fluency Factory | Home</title>
       </Helmet>
       <Slider></Slider>
+      <PopularClass></PopularClass>
     </div>
   );
 };

@@ -1,0 +1,44 @@
+[
+  {
+    "Image": "https://img.freepik.com/free-vector/spanish-concept-illustration_114360-15686.jpg?size=626&ext=jpg&ga=GA1.1.1886416881.1678857576&semt=ais",
+    "Name": "Spanish for kids",
+    "Instructor": "Maria Rodriguez",
+    "Available_seats": 22,
+    "Price": 99.99
+  },
+  {
+    "Image": "https://img.freepik.com/free-vector/learning-chinese-concept-illustration_114360-16499.jpg?size=626&ext=jpg&ga=GA1.1.1886416881.1678857576&semt=ais",
+    "Name": "Chinese Beginners",
+    "Instructor": "Jean-Luc Dubois",
+    "Available_seats": 18,
+    "Price": 89.99
+  },
+  {
+    "Image": "https://img.freepik.com/free-vector/boy-girl-with-flag-germany_1308-9849.jpg?size=626&ext=jpg&ga=GA1.1.1886416881.1678857576&semt=ais",
+    "Name": "German Basics",
+    "Instructor": "Hans Müller",
+    "Available_seats": 50,
+    "Price": 79.99
+  },
+  {
+    "Image": "https://img.freepik.com/free-vector/hand-drawn-asian-people-speaking-different-languages_23-2147869231.jpg?size=626&ext=jpg&ga=GA1.1.1886416881.1678857576&semt=ais",
+    "Name": "Korean Beginners",
+    "Instructor": "Giovanna Rossi",
+    "Available_seats": 100,
+    "Price": 94.99
+  },
+  {
+    "Image": "https://img.freepik.com/free-vector/japanese-calligraphy-concept-illustration_114360-4181.jpg?size=626&ext=jpg&ga=GA1.1.1886416881.1678857576&semt=ais",
+    "Name": "Japanese Intensive",
+    "Instructor": "Takeshi Yamamoto",
+    "Available_seats": 55,
+    "Price": 109.99
+  },
+  {
+    "Image": "https://img.freepik.com/free-vector/hand-drawn-english-school-illustration_23-2149491453.jpg?size=626&ext=jpg&ga=GA1.1.1886416881.1678857576&semt=ais",
+    "Name": "English Basics",
+    "Instructor": "Alex John",
+    "Available_seats": 72,
+    "Price": 84.99
+  }
+]
