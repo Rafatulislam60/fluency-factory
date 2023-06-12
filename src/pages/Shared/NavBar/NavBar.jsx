@@ -9,9 +9,18 @@ const NavBar = () => {
   );
   const { user, logOut } = useContext(AuthContext);
 
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
   useEffect(() => {
     localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("data-theme", localTheme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
 
   const handleLogOut = () => {
@@ -107,7 +116,11 @@ const NavBar = () => {
         </div>
         <div className="navbar-end pr-5">
           <label className="swap swap-rotate">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={handleToggle}
+              checked={theme === "light" ? false : true}
+            />
 
             <svg
               className="swap-on fill-current w-10 h-10"
