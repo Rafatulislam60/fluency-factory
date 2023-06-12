@@ -14,7 +14,7 @@ const PopularClass = () => {
         Our <span className="text-[#F21855]">Popular</span> Courses
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-16 mx-auto">
-        {popularClasses.map((popularClass) => (
+        {popularClasses?.map((popularClass) => (
           <div
             key={popularClass.index}
             className="card w-96 bg-base-100 shadow-xl"
