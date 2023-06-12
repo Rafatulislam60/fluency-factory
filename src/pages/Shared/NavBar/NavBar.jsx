@@ -1,13 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo1.png";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
   const { user, logOut } = useContext(AuthContext);
 
-  
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("data-theme", localTheme);
+  }, [theme]);
 
   const handleLogOut = () => {
     logOut()
