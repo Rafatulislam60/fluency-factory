@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const PopularInstructor = () => {
   const [popularInstructors, setPopularInstructors] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/instructors")
+    fetch("https://fluency-factory-server-rafatulislam60.vercel.app/instructors")
       .then((res) => res.json())
       .then((data) => setPopularInstructors(data));
   }, []);

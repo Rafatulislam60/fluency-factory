@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import { BiShow } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -21,13 +23,15 @@ const SignUp = () => {
       const loggedUser = result.user;
       console.log(loggedUser);
       reset();
-      Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "User created successfully.",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      if (loggedUser) {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "User created successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
       navigate("/");
     });
 
@@ -79,7 +83,7 @@ const SignUp = () => {
                 <span className="label-text text-white text-lg">Password</span>
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 {...register("password", {
                   required: true,
                   minLength: 6,
@@ -89,6 +93,11 @@ const SignUp = () => {
                 placeholder="password"
                 className="input input-bordered text-black"
               />
+              
+                <button className=" bg-gray-700 rounded mt-2 px-3 py-2 mx-auto" onClick={() => setShowPassword(!showPassword)}>
+                  <BiShow size={32} />
+                </button>
+              
               {errors.password?.type === "required" && (
                 <p className="text-red-600">Password is required</p>
               )}

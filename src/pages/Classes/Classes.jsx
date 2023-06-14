@@ -5,7 +5,7 @@ const Classes = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/classes")
+    fetch("https://fluency-factory-server-rafatulislam60.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => setClasses(data));
   });

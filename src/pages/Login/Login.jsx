@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import { BiShow } from "react-icons/bi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -67,7 +69,7 @@ const Login = () => {
                 <span className="label-text text-white text-lg">Password</span>
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 {...register("password", {
                   required: true,
                   minLength: 6,
@@ -77,6 +79,7 @@ const Login = () => {
                 placeholder="password"
                 className="input input-bordered text-black"
               />
+              
               <label className="label">
                 <a
                   href="#"
@@ -84,6 +87,9 @@ const Login = () => {
                 >
                   Forgot password?
                 </a>
+                <button className=" bg-gray-700 rounded mt-2 px-3 py-2 mx-auto" onClick={() => setShowPassword(!showPassword)}>
+                  <BiShow size={32} />
+                </button>
               </label>
             </div>
             <div className="form-control mt-3">
