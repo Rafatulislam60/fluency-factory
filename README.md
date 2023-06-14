@@ -21,5 +21,5 @@ In this project, we used:
 
 ## Live Link
 
-Link: 
+Link: https://fluency-factory.web.app/
 
