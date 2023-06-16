@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Main from "../Layout/Main";
 import Classes from "../pages/Classes/Classes";
+import ManageUser from "../pages/Dashboard/ManageUser/ManageUser";
 import SelectedClass from "../pages/Dashboard/SelectedClass/SelectedClass";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
@@ -42,6 +43,12 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     errorElement: <Error></Error>,
     children: [
+      // admin
+      {
+        path: "manageUser",
+        element: <ManageUser></ManageUser>,
+      },
+
       // student
       {
         path: "selectedClass",
@@ -53,7 +60,7 @@ export const router = createBrowserRouter([
       // },
       // {
       //   path: 'payment-history',
-      //   element: 
+      //   element:
       // }
     ],
   },
