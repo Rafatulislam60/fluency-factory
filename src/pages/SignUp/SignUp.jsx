@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { BiShow } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { saveUser } from "../../api/auth";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
@@ -32,6 +33,7 @@ const SignUp = () => {
           timer: 1500,
         });
       }
+      saveUser(result.user);
       navigate("/");
     });
 
@@ -93,11 +95,14 @@ const SignUp = () => {
                 placeholder="password"
                 className="input input-bordered text-black"
               />
-              
-                <button className=" bg-gray-700 rounded mt-2 px-3 py-2 mx-auto" onClick={() => setShowPassword(!showPassword)}>
-                  <BiShow size={32} />
-                </button>
-              
+
+              <button
+                className=" bg-gray-700 rounded mt-2 px-3 py-2 mx-auto"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <BiShow size={32} />
+              </button>
+
               {errors.password?.type === "required" && (
                 <p className="text-red-600">Password is required</p>
               )}

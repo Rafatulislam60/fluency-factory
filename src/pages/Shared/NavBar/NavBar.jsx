@@ -44,7 +44,7 @@ const NavBar = () => {
       {user ? (
         <>
           <li className="font-semibold text-xl">
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/dashboard/selectedClass">Dashboard</Link>
           </li>
           <button
             onClick={handleLogOut}

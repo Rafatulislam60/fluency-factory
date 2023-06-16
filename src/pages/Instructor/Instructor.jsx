@@ -1,14 +1,8 @@
-import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import useInstructor from "../../hook/useInstructor";
 
 const Instructor = () => {
-  const [instructors, setInstructors] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fluency-factory-server-rafatulislam60.vercel.app/instructors")
-      .then((res) => res.json())
-      .then((data) => setInstructors(data));
-  });
+  const [instructors] = useInstructor();
 
   return (
     <div className="w-full  py-24 lg:py-36">
@@ -31,7 +25,10 @@ const Instructor = () => {
               <tr key={instructorData._id}>
                 <th>{index + 1}</th>
                 <td>
-                  <img className="w-20 h-20 rounded" src={instructorData.Image} />
+                  <img
+                    className="w-20 h-20 rounded"
+                    src={instructorData.Image}
+                  />
                 </td>
                 <td>{instructorData.Name}</td>
                 <td>{instructorData.Email}</td>

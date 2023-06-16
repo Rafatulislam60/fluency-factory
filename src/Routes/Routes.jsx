@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../Layout/Dashboard/Dashboard";
 import Main from "../Layout/Main";
 import Classes from "../pages/Classes/Classes";
+import SelectedClass from "../pages/Dashboard/SelectedClass/SelectedClass";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
 import Instructor from "../pages/Instructor/Instructor";
@@ -33,6 +35,26 @@ export const router = createBrowserRouter([
         path: "signup",
         element: <SignUp></SignUp>,
       },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    errorElement: <Error></Error>,
+    children: [
+      // student
+      {
+        path: "selectedClass",
+        element: <SelectedClass></SelectedClass>,
+      },
+      // {
+      //   path: 'enrolledClass',
+      //   element:
+      // },
+      // {
+      //   path: 'payment-history',
+      //   element: 
+      // }
     ],
   },
 ]);

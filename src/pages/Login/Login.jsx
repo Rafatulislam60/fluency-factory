@@ -21,7 +21,6 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-
   const onSubmit = (data) => {
     signIn(data.email, data.password).then((result) => {
       const user = result.user;
@@ -37,7 +36,10 @@ const Login = () => {
           },
         });
       }
+
+      // saveUser(user.result);
       navigate(from, { replace: true });
+      
     });
   };
 
@@ -79,7 +81,7 @@ const Login = () => {
                 placeholder="password"
                 className="input input-bordered text-black"
               />
-              
+
               <label className="label">
                 <a
                   href="#"
@@ -87,7 +89,10 @@ const Login = () => {
                 >
                   Forgot password?
                 </a>
-                <button className=" bg-gray-700 rounded mt-2 px-3 py-2 mx-auto" onClick={() => setShowPassword(!showPassword)}>
+                <button
+                  className=" bg-gray-700 rounded mt-2 px-3 py-2 mx-auto"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
                   <BiShow size={32} />
                 </button>
               </label>

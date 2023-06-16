@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
+import useInstructor from "../../../hook/useInstructor";
 
 const PopularInstructor = () => {
-  const [popularInstructors, setPopularInstructors] = useState([]);
-  useEffect(() => {
-    fetch("https://fluency-factory-server-rafatulislam60.vercel.app/instructors")
-      .then((res) => res.json())
-      .then((data) => setPopularInstructors(data));
-  }, []);
+  const [popularInstructorsData] = useInstructor();
+  const popularInstructors = popularInstructorsData.slice(0, 6);
 
   return (
     <div className="my-10">
@@ -16,7 +12,7 @@ const PopularInstructor = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-16 mx-auto">
         {popularInstructors.map((popularInstructor) => (
           <div
-            key={popularInstructor.index}
+            key={popularInstructor._id}
             className="card w-96 bg-base-100 shadow-xl"
           >
             <figure>
