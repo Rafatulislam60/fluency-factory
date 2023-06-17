@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import { FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const ManageUser = () => {
@@ -10,7 +9,7 @@ const ManageUser = () => {
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`http://localhost:5000/users/${user._id}?role=admin`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -22,6 +21,26 @@ const ManageUser = () => {
             position: "top-center",
             icon: "success",
             title: `${user.name} is an Admin Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:5000/users/${user._id}?role=instructor`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `${user.name} is an Instructor Now!`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -42,7 +61,6 @@ const ManageUser = () => {
               <th className="bg-[#202C45]">Name</th>
               <th className="bg-[#202C45]">Email</th>
               <th className="bg-[#202C45]">Role</th>
-              <th className="bg-[#202C45]">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -52,25 +70,31 @@ const ManageUser = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  {user.role === "admin" ? (
-                    "admin"
-                  ) : (
+                  <div className="flex gap-5">
                     <button
-                      onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-ghost bg-orange-600  text-white"
+                      onClick={() => handleMakeInstructor(user)}
+                      className={`flex gap-2 items-center rounded-md text-sm font-medium bg-orange-500 p-2 ${
+                        user?.role === "instructor"
+                          ? " btn-disabled opacity-70"
+                          : ""
+                      }`}
+                      title="Make Instructor"
                     >
-                      <FaUserShield></FaUserShield>
+                      Instructor
                     </button>
-                  )}
+                    <button
+                      onClick={() => {
+                        handleMakeAdmin(user);
+                      }}
+                      className={`flex  gap-2 items-center rounded-md text-sm font-medium bg-success p-2 ${
+                        user?.role === "admin" ? " btn-disabled opacity-70" : ""
+                      }`}
+                      title="Make Admin"
+                    >
+                      Admin
+                    </button>
+                  </div>
                 </td>
-                {/* <td>
-                  <button
-                    onClick={() => handleDelete(course)}
-                    className="btn btn-ghost  bg-red-600 text-white"
-                  >
-                    <FaTrashAlt></FaTrashAlt>{" "}
-                  </button>
-                </td> */}
               </tr>
             ))}
           </tbody>
