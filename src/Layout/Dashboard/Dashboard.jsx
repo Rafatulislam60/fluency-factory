@@ -1,17 +1,13 @@
-import { Fade } from "react-awesome-reveal";
-import {
-  FaBook,
-  FaBookOpen,
-  FaBookmark,
-  FaHome,
-  FaUsers,
-  FaWallet,
-} from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../hook/useAdmin";
+import AdminMenu from "../../pages/Dashboard/AdminMenu/AdminMenu";
+import StudentMenu from "../../pages/Dashboard/StudentMenu/StudentMenu";
 
 const Dashboard = () => {
-  // const [isAdmin] = useAdmin();
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  // const [isInstructor] = useInstructors();
+  // const isAdmin = true;
 
   return (
     <div className="drawer lg:drawer-open">
@@ -28,53 +24,13 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-[#202C45] text-base-content">
-          {isAdmin ? (
-            <>
-              <li>
-                <NavLink to="/dashboard/manageClass">
-                  <FaBook />{" "}
-                  <Fade delay={1e3} cascade damping={1e-1}>
-                    Manage Classes
-                  </Fade>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/manageUser">
-                  <FaUsers />{" "}
-                  <Fade delay={1e3} cascade damping={1e-1}>
-                    Manage Users
-                  </Fade>
-                </NavLink>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <NavLink to="/dashboard/selectedClass">
-                  <FaBookmark />{" "}
-                  <Fade delay={1e3} cascade damping={1e-1}>
-                    My Selected Class
-                  </Fade>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/enrolledClass">
-                  <FaBookOpen />{" "}
-                  <Fade delay={1e3} cascade damping={1e-1}>
-                    My Enrolled Class
-                  </Fade>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/history">
-                  <FaWallet />{" "}
-                  <Fade delay={1e3} cascade damping={1e-1}>
-                    Payment History
-                  </Fade>
-                </NavLink>
-              </li>
-            </>
-          )}
+          {isAdmin ? <AdminMenu></AdminMenu> : <StudentMenu></StudentMenu>}
+
+          {/* <>
+            {isAdmin && <AdminMenu></AdminMenu>}
+            {isInstructor && <InstructorMenu></InstructorMenu>}
+            {!isAdmin && <StudentMenu></StudentMenu>}
+          </> */}
 
           <div className="divider text-white"></div>
 
