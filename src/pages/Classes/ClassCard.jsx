@@ -22,7 +22,7 @@ const ClassCard = ({ classData }) => {
         Price,
         email: user?.email,
       };
-      fetch("http://localhost:5000/selectedClass", {
+      fetch("https://fluency-factory-server.vercel.app/selectedClass", {
         method: "POST",
         headers: {
           "content-type": "application/json",

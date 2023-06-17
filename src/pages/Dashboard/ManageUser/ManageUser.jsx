@@ -4,12 +4,12 @@ import Swal from "sweetalert2";
 
 const ManageUser = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
+    const res = await fetch("https://fluency-factory-server.vercel.app/users");
     return await res.json();
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/${user._id}?role=admin`, {
+    fetch(`https://fluency-factory-server.vercel.app/users/${user._id}?role=admin`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -29,7 +29,7 @@ const ManageUser = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/${user._id}?role=instructor`, {
+    fetch(`https://fluency-factory-server.vercel.app/users/${user._id}?role=instructor`, {
       method: "PATCH",
     })
       .then((res) => res.json())

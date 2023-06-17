@@ -9,7 +9,7 @@ const useSelectedClass = () => {
     ["selectedClass"],
     async () => {
       const res = await fetch(
-        `http://localhost:5000/selectedClass/${user?.email}`
+        `https://fluency-factory-server.vercel.app/selectedClass/${user?.email}`
       );
       return await res.json();
     }
